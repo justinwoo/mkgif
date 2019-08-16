@@ -11,5 +11,9 @@ jobs:
           curl https://nixos.org/nix/install | sh
           . /home/runner/.nix-profile/etc/profile.d/nix.sh
           nix-build
+      - name: run mkgif
+        run: |
           ./result/bin/mkgif
+          file test/touroku.m4v
+          file test/touroku.gif
           ./result/bin/mkgif test/touroku.m4v test/touroku.gif 200
