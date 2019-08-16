@@ -1,0 +1,15 @@
+name: My Workflow
+on: [push]
+
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: nix
+        run: |
+          curl https://nixos.org/nix/install | sh
+          . /home/runner/.nix-profile/etc/profile.d/nix.sh
+          nix-build
+          ./result/bin/mkgif
+          ./result/bin/mkgif test/touroku.m4v test/touroku.gif 200
