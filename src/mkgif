@@ -9,6 +9,7 @@ mkgif: convert some input into a gif using ffmpeg.
 usage: mkgif input.mkv output.gif [optional: scale number, default 1000]
 
 examples:
+  mkgif input.mkv # outputs input.gif
   mkgif input.mkv output.gif
   mkgif input.mkv output.gif 500
 """.strip()
@@ -16,14 +17,14 @@ examples:
 if len(sys.argv) == 1:
     print(helpMsg)
 
-elif len(sys.argv) < 3:
-    print("you must provide at least two args, one for input, one for output path.")
+elif len(sys.argv) < 2:
+    print("you must provide at least one arg for input.")
     print(helpMsg)
     exit(1)
 
 else:
     inPath = sys.argv[1]
-    outPath = sys.argv[2]
+    outPath = sys.argv[2] if len(sys.argv) > 2 else os.path.basename(inPath) + ".gif"
     scale = sys.argv[3] if len(sys.argv) > 3 else -1000
 
     palette = "/tmp/palette.png"
