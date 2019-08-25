@@ -3,9 +3,10 @@ let
   default = import ./default.nix { inherit pkgs; };
 in
   pkgs.mkShell {
-    inputsFrom = default;
+    inputsFrom = [ default ];
     buildInputs = [
-        pkgs.mypy
-        pkgs.cacert
+      pkgs.mypy
+      pkgs.cacert
+      default
     ];
   }
