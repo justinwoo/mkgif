@@ -14,7 +14,11 @@ examples:
 
 ## Installation
 
-Do something like this:
+```nix
+nix-env -i -f ./default.nix
+```
+
+Or do something like this:
 
 ```nix
 { pkgs ? import <nixpkgs> {} }:
